@@ -1,0 +1,4 @@
+dist
+laravel/node_modules
+node_modules
+.env

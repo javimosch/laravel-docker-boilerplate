@@ -1,0 +1,17 @@
+version: '3.1'
+
+services:
+  app:
+    restart: always
+    #image: php:7.2-fpm-alpine
+    build: ./scripts/.
+    container_name: ${NAME}
+    ports:
+      - ${PORT}:8000
+    environment:
+      - NODE_ENV=development
+    entrypoint: 
+      - /bin/sh
+      - /app/scripts/container-development.sh
+    volumes:
+      - ./:/app
