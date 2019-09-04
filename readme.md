@@ -14,19 +14,9 @@ If you already have a project, clone the repo and skip this step.
 
 This command will run yarn in the laravel folder, installing node dependencies.
 
-### - yarn serve
+### - yarn watch
 
-Runs artisan serve (php development server).
-
-### - yarn bash:install
-
-Installs bash in the 'serve' running docker container.
-
-### - yarn bash
-
-Run interactive terminal in the 'serve' running container. Here you can use commands like:
-
-- php artisan make:something
+Will run a docker container for running yarn watch (laravel task for frontend assets).
 
 ## Deployment
 
@@ -47,7 +37,22 @@ Arguments:
 
 Example:
 
-     yarn prod -n laravelProdTest -p 8080 
+     yarn serve:prod -n blog_production -p 8080 
+
+## Artisan commands
+
+In orden to run artisan commands, you need to open a bash terminal inside the running container.
+
+     docker exec -ti CONTAINER_NAME bash
+
+CONTAINER_NAME will be the name you specified with -n when you runned the serve or serve:prod task. You can also check the container name with:
+
+     docker ps
+
+Then, you can run commands from the project directory.
+
+     cd /app/laravel //or 'dist' for production
+     php artisan migrate
 
 ## Database
 

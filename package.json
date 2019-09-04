@@ -6,10 +6,8 @@
     "scripts": {
         "generate": "docker run --rm --volume $PWD:/app -w /app --name laravelComposer composer composer create-project --prefer-dist laravel/laravel laravel",
         "deps": "docker run --rm --volume $PWD:/app -w /app/laravel --name laravelDeps node:lts-slim yarn",
-        "bash:install": "docker exec -ti laravelArtisanServe apk add --no-cache bash",
-        "bash": "docker exec -ti -w /app/laravel laravelArtisanServe bash",
+        "watch": "docker run --rm --volume $PWD:/app -w /app/laravel --name laravelDeps node:lts-slim yarn watch",
         "serve": "sh ./scripts/development.sh",
-        "serve:basic": "docker run --rm -p '8000:8000' --volume $PWD:/app --name laravelArtisanServe -w /app/laravel php:7-cli-alpine php artisan serve --host 0.0.0.0",
         "serve:prod": "sh ./scripts/production.sh",
         "clean": "rm -rf ./dist"
     }
